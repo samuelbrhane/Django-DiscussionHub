@@ -1,0 +1,40 @@
+<!-- extends base.html -->
+{% extends "base.html" %}
+
+<!-- block content -->
+<section>
+  {% block content %}
+  <form class="form" method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <h1>Login</h1>
+    <!-- username -->
+    <div class="form-group">
+      <label for="username">Enter Username:</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Username"
+        class="form-control"
+      />
+    </div>
+
+    <!-- password -->
+    <div class="form-group">
+      <label for="password">Enter Password:</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        class="form-control"
+      />
+    </div>
+
+    <!-- submit -->
+    <button type="submit" class="btn btn-primary px-5">Login</button>
+  </form>
+
+  {% endblock content %}
+</section>

@@ -3,6 +3,38 @@ from django.http import HttpResponse
 from .models import Room, Topic
 from .forms import RoomForm
 from django.db.models import Q
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+
+
+# authentication
+def login_user(request):
+    context = {}
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        try:
+            user = User.objects.get(username=username)
+            authenticated_user = authenticate(
+                request, username=username, password=password)
+            if authenticated_user is not None:
+                login(request, authenticated_user)
+                return redirect('home')
+            else:
+                messages.error(request, "Incorrect username or password")
+        except:
+            messages.error(request, "User does not exist")
+
+        return render(request, 'login.html', context)
+    else:
+        return render(request, 'login.html', context)
+
+
+# logout user
+def logout_user(request):
+    logout(request)
+    return redirect('home')
 
 
 # home page
@@ -10,8 +42,9 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ""
     rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(
         title__icontains=q) | Q(description__icontains=q))
+    rooms_count = rooms.count()
     topics = Topic.objects.all()
-    context = {"rooms": rooms, "topics": topics}
+    context = {"rooms": rooms, "topics": topics, "rooms_count": rooms_count}
     return render(request, 'index.html', context)
 
 
