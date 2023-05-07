@@ -9,14 +9,17 @@
   <a href="{% url 'create-room' %}" class="btn btn-primary px-4">Create Room</a>
 
   <!-- rooms -->
-  <div>
+  <div class="mt-3">
     {% for room in rooms %}
-    <div class="d-flex">
-      <p>@{{room.host.username}}</p>
-      <p>{{room.topic.name}}</p>
+    <div class="border border-primary border-2 mb-2">
+      <div class="d-flex">
+        <p>@{{room.host.username}}</p>
+        <p>{{room.topic.name}}</p>
+      </div>
+
+      <p><a href=" {% url 'room' room.id %}"> {{room.title}}</a></p>
     </div>
 
-    <p><a href=" {% url 'room' room.id %}"> {{room.title}}</a></p>
     {% endfor %}
   </div>
 

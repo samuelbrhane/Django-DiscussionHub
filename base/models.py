@@ -22,6 +22,9 @@ class Room(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ["-updated_at", "-created_at"]
+
 
 # messages model
 class Message(models.Model):

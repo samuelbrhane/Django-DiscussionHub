@@ -4,7 +4,7 @@
 <!-- block content -->
 <section>
   {% block content %}
-  <h1 class="text-danger">Room Page</h1>
   <div>{{room.title}}</div>
+  <p><a href=" {% url 'update-room' room.id %}"> update</a></p>
   {% endblock content %}
 </section>

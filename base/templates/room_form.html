@@ -1,0 +1,17 @@
+<!-- extends base.html -->
+{% extends "base.html" %}
+
+<!-- block content -->
+<section>
+  {% block content %}
+
+  <!-- create room form -->
+  <div>
+    <form method="POST">
+      {% csrf_token %} {{form.as_p}}
+      <button type="submit" class="btn px-5 py-1 btn-primary">Create</button>
+    </form>
+  </div>
+
+  {% endblock content %}
+</section>
