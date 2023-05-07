@@ -1,7 +1,7 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 body {
@@ -22,4 +22,8 @@ a {
 ul,
 li {
   list-style: none;
+}
+
+.room {
+  background-color: rgb(75, 8, 92);
 }
