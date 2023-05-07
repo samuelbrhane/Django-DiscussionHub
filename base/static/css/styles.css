@@ -1,7 +1,5 @@
 * {
   box-sizing: border-box !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 body {
@@ -26,4 +24,10 @@ li {
 
 .room {
   background-color: rgb(75, 8, 92);
+}
+
+.input {
+  outline: none;
+  color: #fff;
+  background-color: rgb(45, 8, 55);
 }

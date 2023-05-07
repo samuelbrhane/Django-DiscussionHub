@@ -1,17 +1,17 @@
 <nav class="nav py-3 mb-4">
   <div class="container d-flex justify-content-between align-items-center">
     <!-- logo -->
-    <h2><a href="{% url 'home' %}">Discussion Hub</a></h2>
+    <h1 class="fs-4 fs-md-3 fs-lg-5 fs-xl-6">
+      <a href="{% url 'home' %}">Discussion Hub</a>
+    </h1>
 
-    <!-- links -->
-    <div class="d-flex align-items-center gap-5">
-      <li>Home</li>
-      <li>Room</li>
-      <li>Profile</li>
-    </div>
-
-    <form>
-      <input type="text" />
+    <form action="{% url 'home' %}">
+      <input
+        type="text"
+        class="rounded input shadow-md px-3 py-1"
+        name="q"
+        placeholder="Search..."
+      />
     </form>
   </div>
 </nav>
