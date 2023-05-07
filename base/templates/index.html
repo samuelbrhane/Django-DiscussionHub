@@ -1,0 +1,17 @@
+<!-- extends base.html -->
+{% extends "base.html" %}
+
+<!-- block content -->
+<section>
+  {% block content %}
+  <h1 class="text-danger">Index Page</h1>
+
+  <!-- rooms -->
+  <div>
+    {% for room in rooms %}
+    <h1><a href=" {% url 'room' room.id %}"> {{room.title}}</a></h1>
+    {% endfor %}
+  </div>
+
+  {% endblock content %}
+</section>
