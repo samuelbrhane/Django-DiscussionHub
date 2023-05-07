@@ -5,9 +5,17 @@
 <section>
   {% block content %}
 
+  <!-- create a new room -->
+  <a href="{% url 'create-room' %}" class="btn btn-primary px-4">Create Room</a>
+
   <!-- rooms -->
   <div>
     {% for room in rooms %}
+    <div class="d-flex">
+      <p>@{{room.host.username}}</p>
+      <p>{{room.topic.name}}</p>
+    </div>
+
     <p><a href=" {% url 'room' room.id %}"> {{room.title}}</a></p>
     {% endfor %}
   </div>
