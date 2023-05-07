@@ -1,32 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-rooms = [
-    {
-        "id": 1, "title": "Frontend web development",
-    },
-    {
-        "id": 2, "title": "Backend web development",
-    },
-    {
-        "id": 3, "title": "Learn python and django"
-    }
-]
+from .models import Room
 
 
 # home page
 def home(request):
+    rooms = Room.objects.all()
     context = {"rooms": rooms}
     return render(request, 'index.html', context)
 
+
 # room page
-
-
 def room(request, pk):
-    current_room = None
-    for room in rooms:
-        if room["id"] == int(pk):
-            current_room = room
-
-    context = {"room": current_room}
+    room = Room.objects.get(id=pk)
+    context = {"room": room}
     return render(request, 'room.html', context)

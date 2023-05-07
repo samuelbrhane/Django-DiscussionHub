@@ -1,7 +1,17 @@
-<nav>
-  <h1>Discussion Hub</h1>
-  <ul>
-    <li>Home</li>
-    <li>Room</li>
-  </ul>
+<nav class="nav py-3 mb-4">
+  <div class="container d-flex justify-content-between align-items-center">
+    <!-- logo -->
+    <h2><a href="{% url 'home' %}">Discussion Hub</a></h2>
+
+    <!-- links -->
+    <div class="d-flex align-items-center gap-5">
+      <li>Home</li>
+      <li>Room</li>
+      <li>Profile</li>
+    </div>
+
+    <form>
+      <input type="text" />
+    </form>
+  </div>
 </nav>
