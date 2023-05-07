@@ -5,6 +5,12 @@
 <section>
   {% block content %}
   <div>{{room.title}}</div>
-  <p><a href=" {% url 'update-room' room.id %}"> update</a></p>
+  <div>
+    <a href=" {% url 'update-room' room.id %}" class="btn btn-info"> update</a>
+    <a href=" {% url 'delete-room' room.id %}" class="btn btn-danger">
+      delete</a
+    >
+  </div>
+
   {% endblock content %}
 </section>

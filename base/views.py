@@ -18,7 +18,7 @@ def room(request, pk):
     return render(request, 'room.html', context)
 
 
-# create room page
+# create room
 def create_room(request):
     form = RoomForm()
     context = {"form": form}
@@ -31,7 +31,7 @@ def create_room(request):
         return render(request, 'room_form.html', context)
 
 
-# update room page
+# update room
 def update_room(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
@@ -43,3 +43,13 @@ def update_room(request, pk):
             return redirect("home")
     else:
         return render(request, 'room_form.html', context)
+
+
+# delete room
+def delete_room(request, pk):
+    room = Room.objects.get(id=pk)
+    context = {"name": room}
+    if request.method == 'POST':
+        room.delete()
+        return redirect("home")
+    return render(request, 'delete.html', context)
